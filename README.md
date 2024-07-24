@@ -1,1 +1,1 @@
-bukkit plugin 
+Bukkit Plugin for personal use
