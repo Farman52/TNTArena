@@ -1,0 +1,39 @@
+name: TNTArena
+version: '${version}'
+main: farmans.tntarena.TNTArena
+api-version: '1.20'
+authors: [Farmans]
+
+commands:
+  tntsetup:
+    description: wandka
+    permission: tntarena.tntsetup
+    usage: /tntsetup
+  tntstart:
+    description: starticek
+    permission: tntarena.tntstart
+    usage: /tntstart
+  tntinfo:
+    description: inficko
+    permission: tntarena.tntinfo
+    usage: /tntinfo
+  tntstop:
+    description: stopik
+    permission: tntarena.tntstop
+    usage: /tntstop
+  tntdelay:
+    description: delay
+    permission: tntarena.tntdelay
+    usage: /tntdelay
+
+permissions:
+  tntarena.tntsetup:
+    default: op
+  tntarena.tntstart:
+    default: op
+  tntarena.tntinfo:
+    default: op
+  tntarena.tntstop:
+    default: op
+  tntarena.tntdelay:
+    default: op
