@@ -24,7 +24,11 @@ commands:
   tntdelay:
     description: delay
     permission: tntarena.tntdelay
-    usage: /tntdelay
+    usage: /tntdelay <ms>
+  tntfuse:
+    description: cas odpaleni
+    permission: tntarena.tntfuse
+    usage: /tntfuse <ms>
 
 permissions:
   tntarena.tntsetup:
@@ -36,4 +40,6 @@ permissions:
   tntarena.tntstop:
     default: op
   tntarena.tntdelay:
+    default: op
+  tntarena.tntfuse:
     default: op

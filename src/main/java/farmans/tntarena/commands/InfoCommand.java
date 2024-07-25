@@ -24,6 +24,7 @@ public class InfoCommand implements CommandExecutor {
         String[] coords2 = plugin.getConfig().get("Coords2").toString().split(",");
         int delay = plugin.getConfig().getInt("Delay");
         int taskID = plugin.getConfig().getInt("TaskID");
+        int fuse = plugin.getConfig().getInt("Fuse");
 
         sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "Task ID " + taskID);
         if (coords1[0].equals("x")) {
@@ -36,6 +37,7 @@ public class InfoCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "Druha souradnice X: " + coords2[0] + " Y: " + coords2[1] + " Z: " + coords2[2]);
         }
         sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "Delay je nastaven na " + delay + " milisekund");
+        sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "Cas odpaleni je nastaven na " + fuse + " milisekund");
         sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "----------------------------------");
         return true;
     }

@@ -20,6 +20,7 @@ public final class TNTArena extends JavaPlugin {
             getConfig().addDefault("Coords2", "x,x,x");
             getConfig().addDefault("Delay", 3000);
             getConfig().addDefault("TaskID", -1);
+            getConfig().addDefault("Fuse", 2500);
             getConfig().options().copyDefaults(true);
             saveConfig();
         } else {
@@ -27,6 +28,7 @@ public final class TNTArena extends JavaPlugin {
             getConfig().set("Coords2", "x,x,x");
             getConfig().set("Delay", 3000);
             getConfig().set("TaskID", -1);
+            getConfig().set("Fuse", 2500);
             saveConfig();
             reloadConfig();
         }
@@ -36,6 +38,7 @@ public final class TNTArena extends JavaPlugin {
         getCommand("tntinfo").setExecutor(new InfoCommand(this));
         getCommand("tntstop").setExecutor(new StopCommand(this));
         getCommand("tntdelay").setExecutor(new DelayCommand(this));
+        getCommand("tntfuse").setExecutor(new FuseCommand(this));
 
         getServer().getPluginManager().registerEvents(new BreakBlocks(this), this);
         getServer().getPluginManager().registerEvents(new RightClickBlock(this), this);

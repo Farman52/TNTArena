@@ -8,8 +8,10 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TNTPrimed;
 
 import java.util.Random;
 
@@ -31,10 +33,12 @@ public class StartCommand implements CommandExecutor {
             String[] coords1 = plugin.getConfig().get("Coords1").toString().split(",");
             String[] coords2 = plugin.getConfig().get("Coords2").toString().split(",");
             int delay = plugin.getConfig().getInt("Delay");
+            int fuse = plugin.getConfig().getInt("Fuse");
 
             sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "Prvni souradnice X: " + coords1[0] + " Y: " + coords1[1] + " Z: " + coords1[2]);
             sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "Druha souradnice X: " + coords2[0] + " Y: " + coords2[1] + " Z: " + coords2[2]);
             sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "Delay je nastaven na " + delay + " milisekund");
+            sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "Cas odpaleni je nastaven na " + fuse + " milisekund");
             sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "Pro potvrzeni napis /tntstart confirm");
             sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "----------------------------------");
 
@@ -50,7 +54,9 @@ public class StartCommand implements CommandExecutor {
         String[] coords1 = plugin.getConfig().get("Coords1").toString().split(",");
         String[] coords2 = plugin.getConfig().get("Coords2").toString().split(",");
         if (coords1[0].equals("x") || coords2.equals("x")) {
-            return false;
+            sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "Nemas nastaveny souradnice");
+            sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "----------------------------------");
+            return true;
         }
 
         Player player = (Player)sender;
@@ -77,10 +83,11 @@ public class StartCommand implements CommandExecutor {
                 } else {
                     randomZ = random.nextInt((int) Float.parseFloat(coords1[2]) - (int) Float.parseFloat(coords2[2]) + 1) + (int) Float.parseFloat(coords2[2]);
                 }
-//DODĚLAT RUNNABLE REPEATING TASK
-                world.spawnEntity(new Location(world, randomX, randomY, randomZ), EntityType.PRIMED_TNT);
+
+                TNTPrimed TNT = (TNTPrimed)world.spawnEntity(new Location(world, randomX, randomY, randomZ), EntityType.PRIMED_TNT);
+                TNT.setFuseTicks(plugin.getConfig().getInt("Fuse")/50);
             }
-        }, 20, (int)plugin.getConfig().get("Delay")/50);
+        }, 20, plugin.getConfig().getInt("Delay")/50);
         plugin.getConfig().set("TaskID", fallingTNTs);
         plugin.saveConfig();
 
