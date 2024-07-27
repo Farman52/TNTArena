@@ -29,6 +29,10 @@ commands:
     description: cas odpaleni
     permission: tntarena.tntfuse
     usage: /tntfuse <ms>
+  tntwand:
+    description: trollenicko
+    permission: tntarena.tntwand
+    usage: /tntwand <cas odpaleni v ms> <vzdalenost blocks>
 
 permissions:
   tntarena.tntsetup:

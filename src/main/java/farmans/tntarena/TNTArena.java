@@ -39,6 +39,7 @@ public final class TNTArena extends JavaPlugin {
         getCommand("tntstop").setExecutor(new StopCommand(this));
         getCommand("tntdelay").setExecutor(new DelayCommand(this));
         getCommand("tntfuse").setExecutor(new FuseCommand(this));
+        getCommand("tntwand").setExecutor(new WandCommand(this));
 
         getServer().getPluginManager().registerEvents(new BreakBlocks(this), this);
         getServer().getPluginManager().registerEvents(new RightClickBlock(this), this);
