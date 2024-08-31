@@ -1,1 +1,1 @@
-Bukkit Plugin for personal use
+Spigot Plugin for personal use
