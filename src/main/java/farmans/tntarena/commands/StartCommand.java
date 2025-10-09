@@ -44,7 +44,7 @@ public class StartCommand implements CommandExecutor {
             return true;
         }
         if (plugin.getConfig().getInt("TaskID") != -1) {
-            sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "Uz ti tady bezi jedny tntcka pico");
+            sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "Uz ti tady bezi jedny tntcka");
             sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "TNTArena: " + ChatColor.RESET + "----------------------------------");
             return true;
         }
